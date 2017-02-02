@@ -1,0 +1,10 @@
+//Leer todos los bloques e imprimir su linked block
+	file.Seek(0, 0)
+	j = 0
+	for j = 0; j < blocksCount; j++ {
+		file.Seek(int64(size_of_block-16), 1)
+		stored := make([]byte, 4)
+		file.Read(stored)
+		num := binary.LittleEndian.Uint32(stored)
+		fmt.Println(num)
+	}
